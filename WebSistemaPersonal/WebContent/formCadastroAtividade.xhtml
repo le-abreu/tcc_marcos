@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+		<title>Treino</title>
+	</h:head>
+	<h:body>
+        <p:growl id="avisos" showDetail="true" life="3000" />
+       
+        <h:form>  
+			<!-- CADASTRO DE ATIVIDADE -->
+	       	<p:fieldset legend="Cadastro de Treino" toggleable="false" > 
+	            <p:focus for="tituloAtividade" />  
+			
+		       
+		            <h:panelGrid columns="2"> 
+		            	<p:outputLabel value="Titulo" for="tituloAtividade"/> 
+	    				<p:inputText id="tituloAtividade" value="#{handlerCadastroAtividade.atividade.tituloAtividade}" />
+	                
+						<p:outputLabel value= "Objetivo" />
+						<p:selectOneMenu value="#{handlerCadastroAtividade.atividade.objAtividade}" >
+							<f:selectItem itemLabel="Selecione" itemValue=""/>
+							<f:selectItem itemLabel="Hipertrofia" itemValue="1"/>
+							<f:selectItem itemLabel="Força" itemValue="2"/>
+							<f:selectItem itemLabel="Resistencia" itemValue="3"/>
+							<f:selectItem itemLabel="Recuperação" itemValue="4"/>
+							<f:selectItem itemLabel="Outro" itemValue="5"/>
+						</p:selectOneMenu>
+						
+						
+	    				
+	    				
+						
+						
+						
+						<p:outputLabel value="Data inicial" /> 
+						<p:calendar id="dataInAtiv" value="#{handlerCadastroAtividade.atividade.dataInAtiv}" locale="pt"/>
+						
+						<p:outputLabel value="Data final" />    
+						<p:calendar id="dataFinAtividade" value="#{handlerCadastroAtividade.atividade.dataFinAtividade}" locale="pt" />
+						
+						<h:outputText value="Observação:" />  
+       					<p:inputTextarea rows="6" cols="45"    value="#{handlerCadastroAtividade.atividade.obsAtividade}" />
+						
+	                </h:panelGrid>  
+               
+		     
+			</p:fieldset>	
+			<p:separator style="width: 80%; height: 5px" />
+			<p:commandButton value="Menu" actionListener="#{handlerCadastroAtividade.menu}"  />     
+			<p:commandButton value="Cadastrar" actionListener="#{handlerCadastroAtividade.salvaAtividade}"  /> 
+        </h:form>   
+      					 <p:messages id="mensagens" showDetail="true" />   
+  </h:body>
+	
+	
+</html>
+
+

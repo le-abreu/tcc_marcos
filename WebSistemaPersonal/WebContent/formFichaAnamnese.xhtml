@@ -1,0 +1,186 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<h:head>
+		<title>Ficha de Anamnese</title>
+	</h:head>
+	<h:body>
+        <p:growl id="avisos" showDetail="true" life="3000" />
+	     <p:fieldset legend="Anamnese" toggleable="true" > 
+	       	<h:form>		
+	            
+			
+		       	<p:fieldset legend="Informações Pessoais" toggleable="true" > 
+		            <h:panelGrid columns="4"> 
+		            	<p:outputLabel value="Nome" /> 
+	    				<h:outputText  value="#{handlerFichaAnamnese.aluno.nome}" />
+	    				
+	    				<p:outputLabel value= "Sexo" />
+						<h:outputText  value="Masculino" />
+						
+						<p:outputLabel value="Data de Nascimento" />    
+						<h:outputText value="#{handlerFichaAnamnese.aluno.dataNascimento}" />
+						
+						<p:outputLabel value="Endereço" />          
+						<h:outputText  value="#{handlerFichaAnamnese.aluno.endereco.logradouro}" />
+						
+						<p:outputLabel value="Bairro" />          
+						<h:outputText  value="#{handlerFichaAnamnese.aluno.endereco.bairro}" />
+						
+						<p:outputLabel value="Estado" />          
+						<h:outputText  value="#{handlerFichaAnamnese.aluno.endereco.estado}" />
+						
+						<p:outputLabel value="Cidade" />          
+						<h:outputText  value="#{handlerFichaAnamnese.aluno.endereco.cidade}" />
+					 		
+						<p:outputLabel value="CEP" />          
+						<h:outputText  value="#{handlerFichaAnamnese.aluno.endereco.cep}" />
+						
+						
+						<p:outputLabel value="Profissão" />          
+						<h:outputText  value="#{handlerFichaAnamnese.aluno.profissao}" />
+						
+						<p:outputLabel value="Estado Civil" />          
+						<h:outputText  value="#{handlerFichaAnamnese.aluno.estadoCivil}" />
+						
+						<p:outputLabel value="(DDD)Celular" />   
+						<h:outputText  value="#{handlerFichaAnamnese.aluno.telefone.celular}" />
+						
+						<p:outputLabel value="(DDD)Telefone" />   
+						<h:outputText  value="#{handlerFichaAnamnese.aluno.telefone.numero}" />
+	                
+	                </h:panelGrid> 
+                </p:fieldset>
+		       	
+		       	
+		       		<p:fieldset legend="Objetivos do Treinamento" toggleable="true" >
+		       			<h:panelGrid columns="2">
+							<h:selectManyCheckbox id="objetivoAluno" value="#{handlerFichaAnamnese.anamnese.objetivoAluno}" layout="pageDirection">
+								<f:selectItem id="itemM1" itemLabel="Estética" itemValue="1" />
+								<f:selectItem id="itemM2" itemLabel="Terapeutico" itemValue="2" />
+								<f:selectItem id="itemM3" itemLabel="Lazer" itemValue="3" />
+								<f:selectItem id="itemM4" itemLabel="Saúde" itemValue="4" />
+								<f:selectItem id="itemM5" itemLabel="Profilático" itemValue="5" />
+								<f:selectItem id="itemM6" itemLabel="Condicionamento físico" itemValue="6" />
+								<f:selectItem id="itemM7" itemLabel="Preparação Física" itemValue="7" />
+								<f:selectItem id="itemM8" itemLabel="Alto Rendimento" itemValue="8" />
+								<f:selectItem id="itemM9" itemLabel="Hipertrofia" itemValue="9" />
+							</h:selectManyCheckbox>
+		       			</h:panelGrid>
+					</p:fieldset>
+					
+				 	<p:fieldset legend="Informações Patológica" toggleable="true" > 
+		            	<h:panelGrid columns="2"> 
+		            		<p:outputLabel value="Cirurgia" for="cirurgia"/> 
+	    					<p:inputText id="cirurgia" value="#{handlerFichaAnamnese.anamnese.cirurgia}" />
+	    				
+	    					<p:outputLabel value="Sintomas/Doenças" /> 
+	    					<p:inputText id="doenca" value="#{handlerFichaAnamnese.anamnese.doenca}" />  
+						
+							<p:outputLabel value="Medicamentos" />          
+							<p:inputText id="medicamento" value="#{handlerFichaAnamnese.anamnese.medicamento}" />
+						
+							<p:outputLabel value="Lesões" />          
+							<p:inputText id="lesao" value="#{handlerFichaAnamnese.anamnese.lesao}" />
+						
+							<p:outputLabel value="Alergias" />          
+							<p:inputText id="alergia" value="#{handlerFichaAnamnese.anamnese.alergia}" />
+					 		
+							<p:outputLabel value="TPM/Período" />          
+							<p:inputText id="tmpPeriodo" value="#{handlerFichaAnamnese.anamnese.tmpPeriodo}" />
+						
+							<p:outputLabel value="Outras Manifestações" />          
+							<p:inputText id="manifestacoes" value="#{handlerFichaAnamnese.anamnese.manifestacoes}" />
+							
+							<p:outputLabel value="Cardiopata na Familia" /> 
+							<p:inputText id="cardiopatia" value="#{handlerFichaAnamnese.anamnese.cardiopatia}" />
+						
+							<p:outputLabel value="Hipertensão na Familia" /> 
+							<p:inputText id="hipertensao" value="#{handlerFichaAnamnese.anamnese.hipertensao}" />
+	               	 </h:panelGrid> 
+                	</p:fieldset>	
+                	
+                	<p:fieldset legend="Habitos Sociais" toggleable="true" > 
+					  <h:panelGrid columns="2"> 
+		            		<p:outputLabel value="Fumante?" />
+							<p:selectOneRadio id="fumante" value="#{handlerFichaAnamnese.anamnese.fumante}" >
+								<f:selectItem id="itemFum1" itemLabel="Sim" itemValue="1" />
+								<f:selectItem id="itemFum2" itemLabel="Não" itemValue="2" />
+							</p:selectOneRadio>
+	    				
+	    					<p:outputLabel value="Quanto Tempo?" /> 
+	    					<p:inputText id="tempoFumo" value="#{handlerFichaAnamnese.anamnese.tempoFumo}" /> 
+	    					
+	    					<p:outputLabel value="Quantos cigarros?" /> 
+	    					<p:inputText id="quanCigarro" value="#{handlerFichaAnamnese.anamnese.quanCigarro}" /> 
+	    				
+	    					<p:outputLabel value="Ex-fumante?" />
+							<p:selectOneRadio id="exFumante" value="#{handlerFichaAnamnese.anamnese.exFumante}" >
+								<f:selectItem id="itemExFum1" itemLabel="Sim" itemValue="1" />
+								<f:selectItem id="itemExFum2" itemLabel="Não" itemValue="2" />
+							</p:selectOneRadio>
+	    					
+	    					<p:outputLabel value="Durante Quanto Tempo?" /> 
+	    					<p:inputText id="quatTempFumou" value="#{handlerFichaAnamnese.anamnese.quatTempFumou}" /> 
+	    					
+	    					<p:outputLabel value="Há quanto tempo parou?" /> 
+	    					<p:inputText id="quatTempParou" value="#{handlerFichaAnamnese.anamnese.quatTempParou}" />
+	    					
+	    					<p:outputLabel value="Bebe" />
+							<p:selectOneRadio id="freqBeber" value="#{handlerFichaAnamnese.anamnese.freqBeber}"  layout="pageDirection" >
+								<f:selectItem id="itemB1" itemLabel="Duas ou três vezes por mês" itemValue="1" />
+								<f:selectItem id="itemB2" itemLabel="Duas ou três vezes por semana" itemValue="2" />
+								<f:selectItem id="itemB3" itemLabel="Não bebe" itemValue="3" />
+							</p:selectOneRadio>
+	    					
+	    					<p:outputLabel value="Dieta" />
+	    					<p:selectOneRadio id="dieta" value="#{handlerFichaAnamnese.anamnese.dieta}"  layout="pageDirection" >
+								<f:selectItem id="itemD1" itemLabel="Para ganhar peso" itemValue="1" />
+								<f:selectItem id="itemD2" itemLabel="Parea perder Peso" itemValue="2" />
+								<f:selectItem id="itemD3" itemLabel="Não faz dieta" itemValue="3" />
+							</p:selectOneRadio>
+							
+							<p:outputLabel value="Pratica Atividade Física?" />
+							<p:selectOneRadio id="pratAtividade" value="#{handlerFichaAnamnese.anamnese.pratAtividade}" >
+								<f:selectItem id="itemA1" itemLabel="Sim" itemValue="1" />
+								<f:selectItem id="itemA2" itemLabel="Não" itemValue="2" />
+							</p:selectOneRadio>
+							
+							<p:outputLabel value="Quais?" /> 
+	    					<p:inputText id="quaisAtividades" value="#{handlerFichaAnamnese.anamnese.quaisAtividades}" />
+	    					
+	    					<p:outputLabel value="Já praticou?" />
+							<p:selectOneRadio id="praticouAtiv" value="#{handlerFichaAnamnese.anamnese.praticouAtiv}" >
+								<f:selectItem id="itemJA1" itemLabel="Sim" itemValue="1" />
+								<f:selectItem id="itemJA2" itemLabel="Não" itemValue="2" />
+							</p:selectOneRadio>
+							
+							<p:outputLabel value="Durante quanto Tempo?" /> 
+	    					<p:inputText id="quantoTempPraticou" value="#{handlerFichaAnamnese.anamnese.quantoTempPraticou}" />
+							
+							<p:outputLabel value="Há quanto tempo está inativo?" /> 
+	    					<p:inputText id="tempoInativo" value="#{handlerFichaAnamnese.anamnese.tempoInativo}" />
+	    					
+	    					<p:selectOneRadio id="naoPratAtividade" value="#{handlerFichaAnamnese.anamnese.naoPratAtividade}" >
+								<f:selectItem id="itemNP1" itemLabel="Não praticante" itemValue="1" />
+							</p:selectOneRadio>
+	               	 </h:panelGrid> 
+                	</p:fieldset>	
+              	
+			   	</h:form>	
+			</p:fieldset>	
+			<p:separator style="width: 80%; height: 5px" />     
+			<p:commandButton value="Menu" actionListener="#{handlerFichaAnamnese.menu}"  />
+			<p:commandButton value="Cadastrar" actionListener="#{handlerFichaAnamnese.salvaFichaAnmnese}"  />   	
+           
+      	 <p:messages id="mensagens" showDetail="true" />   
+  </h:body>
+	
+	
+</html>

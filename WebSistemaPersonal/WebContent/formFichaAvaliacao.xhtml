@@ -1,0 +1,218 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<h:head>
+		<title>Ficha de Avaliação</title>
+	</h:head>
+	<h:body>
+        <p:growl id="avisos" showDetail="true" life="3000" />
+	     <p:fieldset legend="Ficha de Avaliação" toggleable="true" > 
+	       	<h:form>		
+	            <p:focus for="nome" />  
+			
+		       	<p:fieldset legend="Informações Pessoais" toggleable="true" > 
+		            <h:panelGrid columns="4"> 
+		            	<p:outputLabel value="Nome" for="nome"/> 
+	    				<p:inputText id="nome" value="#{handlerFichaAvaliacao.aluno.nome}" />
+	    				
+	    				<p:outputLabel value= "Sexo" />
+						<p:selectOneMenu value="#{handlerFichaAvaliacao.aluno.sexo}" >
+							<f:selectItem itemLabel="Selecione" itemValue=""/>
+							<f:selectItem itemLabel="MASCULINO" itemValue="1"/>
+							<f:selectItem itemLabel="FEMININO" itemValue="2"/>
+						</p:selectOneMenu>
+						
+						<p:outputLabel value="Data de Nascimento" />    
+						<p:calendar value="#{handlerFichaAvaliacao.aluno.dataNascimento}" locale="pt"  navigator="true" display="inline" yearRange="c-70:c+5" />
+						
+						<p:outputLabel value="Endereço" />          
+						<p:inputText id="endereco" value="#{handlerFichaAvaliacao.aluno.endereco.logradouro}" />
+						
+						<p:outputLabel value="Bairro" />          
+						<p:inputText id="bairro" value="#{handlerFichaAvaliacao.aluno.endereco.bairro}" />
+						
+						<p:outputLabel value="Estado" />          
+						<p:inputText id="estado" value="#{handlerFichaAvaliacao.aluno.endereco.estado}" />
+						
+						<p:outputLabel value="Cidade" />          
+						<p:inputText id="cidade" value="#{handlerFichaAvaliacao.aluno.endereco.cidade}" />
+					 		
+						<p:outputLabel value="CEP" />          
+						<p:inputText id="cep" value="#{handlerFichaAvaliacao.aluno.endereco.cep}" />
+						
+						
+						<p:outputLabel value="Profissão" />          
+						<p:inputText id="profissao" value="#{handlerFichaAvaliacao.aluno.profissao}" />
+						
+						<p:outputLabel value="Estado Civil" />          
+						<p:inputText id="estadoCivil" value="#{handlerFichaAvaliacao.aluno.estadoCivil}" />
+						
+						<p:outputLabel value="(DDD)Telefone" />   
+						<p:inputMask mask="(999)9999-9999" value="#{handlerFichaAvaliacao.aluno.telefone.celular}" />
+						
+						<p:outputLabel value="(DDD)Telefone" />   
+						<p:inputMask mask="(999)9999-9999" value="#{handlerFichaAvaliacao.aluno.telefone.numero}" />
+	                
+	                </h:panelGrid> 
+                </p:fieldset>
+		       	
+                <p:fieldset legend="Medidas Antropométricas" toggleable="true" > 
+		             	<p:outputLabel value="PERIMETROS" />
+		             				             	
+		             	<h:panelGrid columns="2">	
+		             		<p:outputLabel value="Data Avaliação" /> 
+							<p:calendar id="dataAvaliacao" value="#{handlerFichaAvaliacao.avaliacao.dataAvaliacao}" locale="pt"/>
+		             		<p:outputLabel value="" />
+		             	</h:panelGrid>
+		             		
+		             	<h:panelGrid columns="6">
+		             				             	
+		             		<p:outputLabel value="Peso Corporal" /> 
+	    					<p:inputMask mask="99.99" value="#{handlerFichaAvaliacao.avaliacao.pesoCorporal}" size="1" />
+	    					<p:outputLabel value="kg" />
+	    					
+	    					<p:outputLabel value="Altura" /> 
+	    					<p:inputText id="altura" value="#{handlerFichaAvaliacao.avaliacao.altura}" size="1" />
+	    					<p:outputLabel value="m" />
+	    					
+	    					<p:outputLabel value="Peitoral" /> 
+	    					<p:inputText id="peitora" value="#{handlerFichaAvaliacao.avaliacao.peitoral}" size="1" />
+	    					<p:outputLabel value="cm" />
+	    					
+	    					<p:outputLabel value="Braço D" /> 
+	    					<p:inputText id="bracoD" value="#{handlerFichaAvaliacao.avaliacao.bracoD}" size="1" />
+	    					<p:outputLabel value="cm" />
+	    					
+	    					<p:outputLabel value="Braço E" /> 
+	    					<p:inputText id="bracoE" value="#{handlerFichaAvaliacao.avaliacao.bracoE}" size="1" />
+	    					<p:outputLabel value="cm" />
+	    					
+	    					<p:outputLabel value="Ante Braço D" /> 
+	    					<p:inputText id="anteBracoD" value="#{handlerFichaAvaliacao.avaliacao.anteBracoD}" size="1" />
+	    					<p:outputLabel value="cm" />
+	    					
+	    					<p:outputLabel value="Ante Braço E" /> 
+	    					<p:inputText id="anteBracoE" value="#{handlerFichaAvaliacao.avaliacao.anteBracoE}" size="1" />
+	    					<p:outputLabel value="cm" />
+	    					
+	    					<p:outputLabel value="Coxa D" /> 
+	    					<p:inputText id="coxaD" value="#{handlerFichaAvaliacao.avaliacao.coxaD}"  size="1"/>
+	    					<p:outputLabel value="cm" />
+	    					
+	    					<p:outputLabel value="Coxa E" /> 
+	    					<p:inputText id="coxaE" value="#{handlerFichaAvaliacao.avaliacao.coxaE}" size="1" />
+	    					<p:outputLabel value="cm" />
+	    					
+	    					<p:outputLabel value="Perna D" /> 
+	    					<p:inputText id="pernaD" value="#{handlerFichaAvaliacao.avaliacao.pernaD}"  size="1"/>
+	    					<p:outputLabel value="cm" />
+	    					
+	    					<p:outputLabel value="Perna E" /> 
+	    					<p:inputText id="pernaE" value="#{handlerFichaAvaliacao.avaliacao.pernaE}" size="1" />
+	    					<p:outputLabel value="cm" />
+	    					
+	    					<p:outputLabel value="Cintura" /> 
+	    					<p:inputText id="cintura" value="#{handlerFichaAvaliacao.avaliacao.cintura}" size="1" />
+	    					<p:outputLabel value="cm" />
+	    					
+	    					<p:outputLabel value="Abdômen" /> 
+	    					<p:inputText id="abdomen" value="#{handlerFichaAvaliacao.avaliacao.abdomen}" size="1" />
+	    					<p:outputLabel value="cm" />
+	    					
+	    					<p:outputLabel value="Quadril" /> 
+	    					<p:inputText id="quadril" value="#{handlerFichaAvaliacao.avaliacao.quadril}" size="1" />
+	    					<p:outputLabel value="cm" />
+	    					
+	    					<p:outputLabel value="Dobras Cutâneas" />
+	    					<p:inputText id="dobCutaneas" value="#{handlerFichaAvaliacao.avaliacao.dobCutaneas}" size="1" />
+	    					<p:outputLabel value="cm" />
+	    					
+	    					<p:outputLabel value="Axilar-média" /> 
+	    					<p:inputText id="axiliaMedia" value="#{handlerFichaAvaliacao.avaliacao.axiliaMedia}" size="1" />
+	    					<p:outputLabel value="cm" />
+	    					
+	    					<p:outputLabel value="Peitoral" /> 
+	    					<p:inputText id="peitoralCutanea" value="#{handlerFichaAvaliacao.avaliacao.peitoralCutanea}" size="1" />
+	    					<p:outputLabel value="cm" />
+	    					
+	    					<p:outputLabel value="Subscapular" /> 
+	    					<p:inputText id="subscapular" value="#{handlerFichaAvaliacao.avaliacao.subscapular}" size="1" />
+	    					<p:outputLabel value="cm" />
+	    					
+	    					<p:outputLabel value="Tricipital" /> 
+	    					<p:inputText id="tricipital" value="#{handlerFichaAvaliacao.avaliacao.tricipital}" size="1" />
+	    					<p:outputLabel value="cm" />
+	    					
+	    					<p:outputLabel value="Supra-ilíaca" /> 
+	    					<p:inputText id="supraIliaca" value="#{handlerFichaAvaliacao.avaliacao.supraIliaca}" size="1" />
+	    					<p:outputLabel value="cm" />
+	    					
+	    					<p:outputLabel value="Abdominal" /> 
+	    					<p:inputText id="abdominal" value="#{handlerFichaAvaliacao.avaliacao.abdominal}" size="1" />
+	    					<p:outputLabel value="cm" />
+	    					
+	    					<p:outputLabel value="Coxa" /> 
+	    					<p:inputText id="coxa" value="#{handlerFichaAvaliacao.avaliacao.coxa}" size="1" />
+	    					<p:outputLabel value="cm" />
+	    					
+	    			  </h:panelGrid>
+		        	</p:fieldset>
+		        	<p:fieldset legend="Medidas hemodinâmicas" toggleable="true" > 
+		             <h:panelGrid columns="2">
+		             		
+		             		<p:outputLabel value="FC Máxima" /> 
+							<p:inputText id="freqCardMax" value="#{handlerFichaAvaliacao.avaliacao.freqCardMax}" size="1" />
+		             		
+		             		<p:outputLabel value="bpm" /> 
+	    					<p:inputText id="bpmMax" value="#{handlerFichaAvaliacao.avaliacao.bpmMax}" size="1" />
+	    					
+	    					<p:outputLabel value="FC Iniciais" /> 
+	    					<p:inputText id="fcIniciais" value="#{handlerFichaAvaliacao.avaliacao.fcIniciais}" size="1" />
+	    					
+	    					<p:outputLabel value="bpm" /> 
+	    					<p:inputText id="bpmInic" value="#{handlerFichaAvaliacao.avaliacao.bpmInic}" size="1" />
+	    					
+	    					<p:outputLabel value="FC Alcançada" /> 
+	    					<p:inputText id="fcAlcancada" value="#{handlerFichaAvaliacao.avaliacao.fcAlcancada}" size="1" />
+	    					
+	    					<p:outputLabel value="bpm" /> 
+	    					<p:inputText id="bpmAlc" value="#{handlerFichaAvaliacao.avaliacao.bpmAlc}" size="1" />
+	    					
+	    					<p:outputLabel value="PA de repouso" /> 
+	    					<p:inputText id="paRepouso" value="#{handlerFichaAvaliacao.avaliacao.paRepouso}" size="1" />
+	    					
+	    					<p:outputLabel value="% máximo PA de esforço" /> 
+	    					<p:inputText id="percMaxPAesforco" value="#{handlerFichaAvaliacao.avaliacao.percMaxPAesforco}" size="1" />
+	    					
+	    					<p:outputLabel value="Batimentos por minuto" /> 
+	    					<p:inputText id="batPorMinuto" value="#{handlerFichaAvaliacao.avaliacao.batPorMinuto}" size="1" />
+	    					
+	    					<p:outputLabel value="IMC" />
+	    					<p:inputText id="imc" value="#{handlerFichaAvaliacao.avaliacao.imc}" size="1" />
+	    					
+	    					</h:panelGrid>
+	    				
+	    					<h:panelGrid columns="3">		
+	    					<p:outputLabel value="VO2 máximo" size="1"/> 
+	    					<p:inputText id="vo2Max" value="#{handlerFichaAvaliacao.avaliacao.vo2Max}" size="1" />
+	    					<p:outputLabel value="ml.(Kg. min)-1" /> 
+	    				</h:panelGrid>
+	    			</p:fieldset>
+			   	</h:form>	
+			</p:fieldset>	
+			<p:separator style="width: 80%; height: 5px" />
+			
+			<p:commandButton value="Menu" actionListener="#{handlerFichaAvaliacao.menu}"  />     
+			<p:commandButton value="Cadastrar" actionListener="#{handlerFichaAvaliacao.salvaFichaAvaliacao}"  />   	
+           
+      	 <p:messages id="mensagens" showDetail="true" />   
+  </h:body>
+	
+	
+</html>

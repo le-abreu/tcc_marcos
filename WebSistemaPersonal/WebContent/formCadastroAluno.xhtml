@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+	
+	<h:head>
+		<title>Cadastro de Aluno</title>
+	</h:head>
+	<h:body>
+        <p:growl id="avisos" showDetail="true" life="3000" />
+       
+        <h:form id="formAluno">  
+			<!-- INFORMACOES BASICAS ALUNO -->
+	       	<p:fieldset legend="Cadastro de Aluno" style="font-size:15px;" toggleable="true" > 
+	            <p:focus for="nome" />  
+			
+		       	<p:fieldset legend="Informações Pessoais" toggleable="true" > 
+		            <h:panelGrid columns="2"> 
+		            	<p:outputLabel value="Nome" for="nome"/> 
+	    				<p:inputText id="nome" value="#{handlerAluno.aluno.nome}" size="30" />
+	                
+						<p:outputLabel value="RG" /> 
+						<p:inputText id="rg" value="#{handlerAluno.aluno.rg}" size="30" />  			
+						
+						<p:outputLabel value="CPF" />   
+						<p:inputMask mask="999.999.999-99" value="#{handlerAluno.aluno.cpf}" size="30" /> 	
+	
+						<h:outputLabel value="Sexo:" for="sexo" />
+						<p:selectOneRadio id="sexo" value="#{handlerAluno.aluno.sexo}">
+							<f:selectItem id="itemSex1" itemLabel="Masculino" itemValue="masculino" />
+							<f:selectItem id="itemSex2"  itemLabel="Feminino" itemValue="feminino" />
+						</p:selectOneRadio>
+						
+						
+						
+	                </h:panelGrid>  
+                </p:fieldset>
+                
+		       	<p:fieldset legend="Endereço" toggleable="true" > 
+		       		<h:panelGrid columns="2">
+						<p:outputLabel value="Endereço" />          
+						<p:inputText id="endereco" value="#{handlerAluno.aluno.endereco.logradouro}" size="30" />
+ 	
+						<p:outputLabel value="Bairro" />          
+						<p:inputText id="bairro" value="#{handlerAluno.aluno.endereco.bairro}" size="30" />
+						
+						<p:outputLabel value="Estado" />          
+						<p:inputText id="estado" value="#{handlerAluno.aluno.endereco.estado}" size="30" />	
+					 		
+						<p:outputLabel value="Cidade" />          
+						<p:inputText id="cidade" value="#{handlerAluno.aluno.endereco.cidade}" size="30" />
+					 		
+						<p:outputLabel value="CEP" />          
+						<p:inputMask  value="#{handlerAluno.aluno.endereco.cep}" size="30" mask="99999-999" />	
+			        
+						<p:outputLabel value="DDI" />   
+						<p:inputMask value="#{handlerAluno.aluno.telefone.ddi}" mask="99" /> 
+
+						<p:outputLabel value="DDD" />   
+						<p:inputMask value="#{handlerAluno.aluno.telefone.ddd}" mask="99" /> 
+
+						<p:outputLabel value="Telefone" />   
+						<p:inputMask value="#{handlerAluno.aluno.telefone.numero}" mask="9999-9999" /> 
+
+						<p:outputLabel value="Operadora" />   
+						<p:inputMask value="#{handlerAluno.aluno.telefone.operadora}" mask="aaaaaaaaaa" /> 
+
+						<h:inputHidden value="#{handlerAluno.aluno.telefone.id}" /> 
+					</h:panelGrid>	 
+                </p:fieldset>
+			
+			   	<p:fieldset legend="Acesso" toggleable="true" > 
+		       		<h:panelGrid columns="2">
+						<p:outputLabel value="E-mail" /> 
+						<p:inputText id="email" value="#{handlerAluno.aluno.email}" />   
+			
+						<p:outputLabel value="Senha para o Aluno" />              
+						<p:password id="senha1" value="#{handlerAluno.aluno.senha}" required="true" />
+				 	</h:panelGrid> 
+			   	</p:fieldset>
+			</p:fieldset>	
+			
+			<p:separator style="width: 80%; height: 5px" /> 
+			<p:commandButton id="btnCadastro" value="Confirmar" title="Confirmar" icon="ui-icon-document" action="#{handlerAluno.salvaAluno}" style="align:right" update=":formAluno"/>
+			<p:outputLabel value="Ao finalizar o cadastro, um e-mail de confimação será enviado ao aluno para que possa ter acesso ao sistema." />     	
+ 		 	<p:messages id="mensagens" showDetail="true" />   
+        </h:form>   
+  </h:body>
+	
+</html>
+	
+	

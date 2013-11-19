@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<h:head>
+		<title>Cadastro de Personal</title>
+	</h:head>
+	<h:body>
+        <p:growl id="avisos" showDetail="true" life="3000" />
+			<!-- INFORMACOES BASICAS PERSONAL -->
+	       	<p:fieldset legend="Cadastro de Personal Trainer" style="font-size:15px;" toggleable="true" > 
+		       <h:form id="form">  
+	            <p:focus for="nome" />  
+			
+		       	<p:fieldset legend="Informações Pessoais" toggleable="true" > 
+		            <h:panelGrid columns="2"> 
+		            	<p:outputLabel value="Nome" for="nome"/> 
+	    				<p:inputText id="nome" value="#{handlerPersonal.personal.nome}" size="30" />
+	                
+						<p:outputLabel value="RG" /> 
+						<p:inputText id="rg" value="#{handlerPersonal.personal.rg}" size="30" />  			
+						
+						<p:outputLabel value="CPF" />   
+						<p:inputMask mask="999.999.999-99" value="#{handlerPersonal.personal.cpf}" size="30" /> 	
+	
+						
+						
+						<p:outputLabel value="Sexo" />
+							<p:selectOneRadio id="sexoPersonal" value="#{handlerPersonal.personal.sexo}" >
+								<f:selectItem id="itemSex1" itemLabel="Masculino" itemValue="1" />
+								<f:selectItem id="itemSex2" itemLabel="Feminino" itemValue="2" />
+							</p:selectOneRadio>
+	                </h:panelGrid>  
+                </p:fieldset>
+		       	<p:fieldset legend="Endereço" toggleable="true" > 
+		       		<h:panelGrid columns="2">
+						<p:outputLabel value="Endereço" />          
+						<p:inputText id="endereco" value="#{handlerPersonal.personal.endereco.logradouro}" size="30" />
+ 	
+						<p:outputLabel value="Bairro" />          
+						<p:inputText id="bairro" value="#{handlerPersonal.personal.endereco.bairro}" size="30" />	
+					 	
+					 	<p:outputLabel value="Estado" />          
+						<p:inputText id="estado" value="#{handlerPersonal.personal.endereco.estado}" size="30" />
+							
+						<p:outputLabel value="Cidade" />          
+						<p:inputText id="cidade" value="#{handlerPersonal.personal.endereco.cidade}" size="30" />
+					 		
+						<p:outputLabel value="CEP" />
+						<p:inputMask id="cep" value="#{handlerPersonal.personal.endereco.cep}" size="30" mask="99999-999" />         
+						
+						<p:outputLabel value="DDI" />   
+						<p:inputMask value="#{handlerPersonal.personal.telefone.ddi}" mask="99" /> 
+
+						<p:outputLabel value="DDD" />   
+						<p:inputMask value="#{handlerPersonal.personal.telefone.ddd}" mask="99" /> 
+
+						<p:outputLabel value="Telefone" />   
+						<p:inputMask value="#{handlerPersonal.personal.telefone.numero}" mask="9999-9999" /> 
+
+						<p:outputLabel value="Operadora" />   
+						<p:inputMask value="#{handlerPersonal.personal.telefone.operadora}" mask="aaaaaaaaaa" /> 
+
+						<h:inputHidden value="#{handlerPersonal.personal.telefone.id}" /> 
+						
+					</h:panelGrid>	 
+                </p:fieldset>
+			  
+			<!-- FIM - INFORMACOES BASICAS PERSONAL -->
+				<p:fieldset legend="Informações Profissionais" toggleable="true" > 
+		       		<h:panelGrid columns="2">
+			       	
+						<p:outputLabel value="C.R.E.F." /> 
+						<p:inputText id="numCref" value="#{handlerPersonal.personal.numCref}" size="30" />				
+			       
+						<p:outputLabel value="Graduação" /> 
+						<p:inputText id="graduacao" value="#{handlerPersonal.personal.graduacao}" size="30" />
+
+						<h:outputLabel value="Modalidade: " for="modalidade" />
+						<p:autoComplete id="modalidade" value="#{handlerPersonal.modalidade}"
+							completeMethod="#{handlerPersonal.complete}">
+						</p:autoComplete>
+						<p:commandButton value="Salvar modalidade" actionListener="#{handlerPersonal.salvarModalidade}" update=":form"/>   
+						
+						<p:dataTable id="dataTablePedidos" var="m"
+							value="#{handlerPersonal.modalidades}" styleClass="ui-widget-content grid"
+							emptyMessage="Nenhum Modalidade encontrado"	style="margin-top: 8px">
+		
+							<f:facet name="header">
+								<h:outputText value="" />
+							</f:facet>
+							
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Modalidade" />
+								</f:facet>
+								<h:outputText value="#{m.nome}" />
+							</p:column>
+						</p:dataTable>
+					</h:panelGrid> 
+			   	</p:fieldset>
+			   	<p:fieldset legend="Acesso" toggleable="true" > 
+		       		<h:panelGrid columns="2">
+			   		       
+						<p:outputLabel value="E-mail" /> 
+						<p:inputText id="email" value="#{handlerPersonal.personal.email}" size="30" />   
+			
+						<p:outputLabel value="Senha" />              
+						<p:password id="senha1" value="#{handlerPersonal.personal.senha}" size="30" />
+						<p:outputLabel value="Confirme a senha" />              
+						<p:password id="senha2" value="#{handlerPersonal.personal.senha}" size="30" />
+				 	</h:panelGrid> 
+			   	</p:fieldset>
+              </h:form>   
+			</p:fieldset>	
+			<p:separator style="width: 80%; height: 5px" />     
+			<p:commandButton value="Menu" actionListener="#{handlerPersonal.menu}"  />
+			<p:commandButton value="Cadastrar" actionListener="#{handlerPersonal.salvarPersonal}" update="avisos,mensagens"  />   	
+      	 <p:messages id="mensagens" showDetail="true" />   
+  </h:body>
+	
+	
+</html>

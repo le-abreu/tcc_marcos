@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+	
+	<h:head>
+		<title>Login</title>
+	</h:head>
+	<h:body>
+        <p:growl id="avisos" showDetail="true" life="3000" />
+       
+        <h:form id="formAcesso">  
+			<!-- INFORMACOES BASICAS ALUNO -->
+	       	<p:fieldset legend="Login" style="font-size:15px;" toggleable="true" > 
+	            <p:focus for="email" />  
+		       
+		            <h:panelGrid columns="2"> 
+    					<h:outputLabel value="Acesso:" for="Acesso" />
+						<p:selectOneRadio id="Acesso" value="#{handlerAcesso.acesso}">
+							<f:selectItem id="itemAcesso1" itemLabel="Personal" itemValue="personal" />
+							<f:selectItem id="itemAcesso2"  itemLabel="Aluno" itemValue="aluno" />
+						</p:selectOneRadio>
+		            	
+		            	<p:outputLabel value="E-mail" for="email"/> 
+	    				<p:inputText id="email" value="#{handlerAcesso.email}" size="30" />
+	                
+						<p:outputLabel value="Senha" />              
+						<p:password id="senha" value="#{handlerAcesso.senhaSistema}" required="true" /> 			
+	                </h:panelGrid>  
+			</p:fieldset>	
+			
+			<p:separator style="width: 80%; height: 5px" /> 
+			<p:commandButton id="btnAcesso" value="Confirmar" title="Confirmar" icon="ui-icon-document" action="#{handlerAcesso.acessoEmailSenha}" style="align:right" update=":formAcesso"/>
+ 		 	<p:messages id="mensagens" showDetail="true" />   
+        </h:form>   
+  </h:body>
+	
+</html>
+	
+	
